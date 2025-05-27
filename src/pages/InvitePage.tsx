@@ -1,12 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Envelope from "../components/Envelope";
-import InvitationContent from "../components/InvitationContent";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 type Guest = {
   name: string;
   inviteCode: string;
-  eventType: "tan-hon" | "vu-quy" | "bao-hy";
+  eventType: 'tan-hon' | 'vu-quy' | 'bao-hy';
 };
 
 export default function InvitePage() {
@@ -31,7 +29,7 @@ export default function InvitePage() {
           setGuest(null);
         }
       } catch (err) {
-        console.error("Lỗi khi gọi API", err);
+        console.error('Lỗi khi gọi API', err);
       } finally {
         setLoading(false);
       }
@@ -44,9 +42,22 @@ export default function InvitePage() {
   if (!guest) return <p>Không tìm thấy lời mời.</p>;
 
   return (
-    <div className="flex flex-col items-center mt-10">
-      <Envelope guestName={guest.name} />
-      <InvitationContent guestName={guest.name} eventType={guest.eventType} />
+    <div className='flex flex-col items-center scroll-container'>
+      <div className='sticky-container'>
+        <div className='bg-scroll'></div>
+        <div className='bg-main brightness-50'></div>
+        <div className='txt-main text-white text-shadow-lg'>
+          <h2 className='text-small md:text-medium lg:text-huge font-1ftv'>
+            Ngọc Minh & Ngân Hà
+          </h2>
+          <h3 className='mt-5 text-3xl font-cormorant'>13 . 07 . 2025</h3>
+          <h3 className='mt-10 font-cormorant'>TRÂN TRỌNG KÍNH MỜI</h3>
+          <h3 className='text-small md:text-medium font-1ftv mt-2'>
+            <span>Vợ chồng bạn </span>
+            <span className='font-bold'>{guest.name}</span>
+          </h3>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,46 +1,49 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-red-sangria: #9d060d;
   --text-huge: 7rem;
   --text-huge--line-height: 7rem;
-  --text-medium: 3rem;
+  --text-medium: 5rem;
+  --text-medium--line-height: 5rem;
+  --text-small: 3rem;
+  --text-small--line-height: 3rem;
 }
 
 @font-face {
-  font-family: "1FTV VIP High Spirited";
-  src: url("/fonts/1FTV-VIP-High-Spirited.otf") format("opentype");
+  font-family: '1FTV VIP High Spirited';
+  src: url('/fonts/1FTV-VIP-High-Spirited.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "HLT AphroditeSlimPro";
-  src: url("/fonts/HLT-AphroditeSlimPro.ttf") format("truetype");
+  font-family: 'HLT AphroditeSlimPro';
+  src: url('/fonts/HLT-AphroditeSlimPro.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Cormorant Garamond";
-  src: url("/fonts/CormorantGaramond.ttf") format("truetype");
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 .font-1ftv {
-  font-family: "1FTV VIP High Spirited", sans-serif;
+  font-family: '1FTV VIP High Spirited', sans-serif;
 }
 
 .font-hlt {
-  font-family: "HLT AphroditeSlimPro", sans-serif;
+  font-family: 'HLT AphroditeSlimPro', sans-serif;
 }
 
 .font-cormorant {
-  font-family: "Cormorant Garamond", serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 html {
@@ -49,4 +52,110 @@ html {
 
 section {
   scroll-snap-align: start;
+}
+
+.scroll-container {
+  width: 100%;
+  max-width: 1920px;
+  height: 260vh;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.scroll-container .scroll-item {
+  animation: text-color-change ease-in-out;
+  animation-timeline: scroll(root);
+}
+
+.sticky-container {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.bg-scroll {
+  z-index: 1;
+  filter: grayscale(50%);
+  background-image: url('/images/cover.png');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  overflow: visible;
+  animation: zoom-in-more ease-in-out;
+  animation-timeline: scroll(root);
+}
+
+.bg-main {
+  background-image: url('/images/bg.jpg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  animation: zoom-in ease-in-out;
+  animation-timeline: scroll(root);
+}
+
+.txt-main {
+  z-index: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  inset: 0% auto auto 0%;
+  animation: fade-out ease-in-out;
+  animation-timeline: scroll(root);
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes text-color-change {
+  from {
+    color: white;
+  }
+  to {
+    color: var(--color-red-sangria);
+  }
+}
+
+@keyframes bg-color-change {
+  from {
+    background: var(--color-red-sangria);
+  }
+  to {
+    background: white;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+@keyframes zoom-in-more {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
 }
