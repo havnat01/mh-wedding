@@ -1,25 +1,52 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+  --color-red-sangria: #9d060d;
+  --text-huge: 7rem;
+  --text-huge--line-height: 7rem;
+  --text-medium: 3rem;
+}
 
 @font-face {
-  font-family: '1FTV VIP High Spirited';
-  src: url('/fonts/1FTV-VIP-High-Spirited.otf') format('opentype');
+  font-family: "1FTV VIP High Spirited";
+  src: url("/fonts/1FTV-VIP-High-Spirited.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'HLT AphroditeSlimPro';
-  src: url('/fonts/HLT-AphroditeSlimPro.ttf') format('truetype');
+  font-family: "HLT AphroditeSlimPro";
+  src: url("/fonts/HLT-AphroditeSlimPro.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 .font-1ftv {
-  font-family: '1FTV VIP High Spirited', sans-serif;
+  font-family: "1FTV VIP High Spirited", sans-serif;
 }
 
 .font-hlt {
-  font-family: 'HLT AphroditeSlimPro', sans-serif;
+  font-family: "HLT AphroditeSlimPro", sans-serif;
+}
+
+.font-cormorant {
+  font-family: "Cormorant Garamond", serif;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  scroll-snap-align: start;
 }

@@ -1,12 +1,12 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import Envelope from '../components/Envelope';
-import InvitationContent from '../components/InvitationContent';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Envelope from "../components/Envelope";
+import InvitationContent from "../components/InvitationContent";
 
 type Guest = {
   name: string;
   inviteCode: string;
-  eventType: 'tan-hon' | 'vu-quy' | 'bao-hy';
+  eventType: "tan-hon" | "vu-quy" | "bao-hy";
 };
 
 export default function InvitePage() {
@@ -31,7 +31,7 @@ export default function InvitePage() {
           setGuest(null);
         }
       } catch (err) {
-        console.error('Lỗi khi gọi API', err);
+        console.error("Lỗi khi gọi API", err);
       } finally {
         setLoading(false);
       }
@@ -44,7 +44,7 @@ export default function InvitePage() {
   if (!guest) return <p>Không tìm thấy lời mời.</p>;
 
   return (
-    <div className='flex flex-col items-center mt-10'>
+    <div className="flex flex-col items-center mt-10">
       <Envelope guestName={guest.name} />
       <InvitationContent guestName={guest.name} eventType={guest.eventType} />
     </div>

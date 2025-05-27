@@ -1,8 +1,13 @@
 export default function Envelope({ guestName }: { guestName: string }) {
   return (
-    <div className='p-4 bg-pink-100 text-center rounded-lg shadow-lg'>
-      <p className='text-xl font-cursive'>Thiệp mời đến</p>
-      <h2 className='text-3xl font-bold mt-2'>{guestName}</h2>
-    </div>
+    <section className="p-4 bg-white-100 text-center shadow-lg text-red-sangria w-screen h-screen flex flex-col items-center justify-center">
+      <h2 className="text-huge font-1ftv">Ngọc Minh & Ngân Hà</h2>
+      <h3 className="mt-5 text-3xl font-cormorant">13 . 07 . 2025</h3>
+      <h3 className="mt-10 font-cormorant">TRÂN TRỌNG KÍNH MỜI</h3>
+      <h3 className="text-medium font-1ftv mt-2">
+        <span>Vợ chồng bạn </span>
+        <span className="font-bold">{guestName}</span>
+      </h3>
+    </section>
   );
 }
