@@ -1,25 +1,232 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+  --color-red-sangria: #9d060d;
+  --text-huge: 7rem;
+  --text-huge--line-height: 7rem;
+  --text-medium: 5rem;
+  --text-medium--line-height: 5rem;
+  --text-small: 3rem;
+  --text-small--line-height: 3rem;
+}
 
 @font-face {
-  font-family: '1FTV VIP High Spirited';
-  src: url('/fonts/1FTV-VIP-High-Spirited.otf') format('opentype');
+  font-family: "1FTV VIP High Spirited";
+  src: url("/fonts/1FTV-VIP-High-Spirited.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'HLT AphroditeSlimPro';
-  src: url('/fonts/HLT-AphroditeSlimPro.ttf') format('truetype');
+  font-family: "HLT AphroditeSlimPro";
+  src: url("/fonts/HLT-AphroditeSlimPro.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 .font-1ftv {
-  font-family: '1FTV VIP High Spirited', sans-serif;
+  font-family: "1FTV VIP High Spirited", sans-serif;
 }
 
 .font-hlt {
-  font-family: 'HLT AphroditeSlimPro', sans-serif;
+  font-family: "HLT AphroditeSlimPro", sans-serif;
+}
+
+.font-cormorant {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.scroll-container {
+  width: 100%;
+  max-width: 1920px;
+  height: 260vh;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.sticky-container {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.bg-scroll {
+  z-index: 1;
+  filter: grayscale(50%);
+  background-image: url("/images/cover.png");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  overflow: visible;
+  animation: zoom-out-more ease-in-out;
+  animation-timeline: scroll(root);
+}
+
+.bg-main {
+  background-image: url("/images/bg.jpg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  animation: zoom-out ease-in-out;
+  animation-timeline: scroll(root);
+}
+
+.center-item {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  inset: 0% auto auto 0%;
+}
+
+.scroll-img {
+  z-index: 10;
+  width: 50px;
+  margin-bottom: 40px;
+  margin-left: calc(50% - 25px);
+  position: absolute;
+  inset: auto 0% 0%;
+  animation: fade-out ease-in-out forwards;
+  animation-timeline: scroll(root);
+  animation-range-start: 0vh;
+  animation-range-end: 25vh;
+}
+
+.txt-main {
+  animation: fade-out ease-in-out forwards, zoom-out-mid ease-in-out;
+  animation-timeline: scroll(root);
+  animation-range-start: 0vh;
+  animation-range-end: 50vh;
+}
+
+.txt-sub {
+  opacity: 0;
+  animation: fade-in ease-in-out forwards, zoom-in ease-in-out;
+  animation-timeline: scroll(root);
+  animation-range-start: 25vh;
+  animation-range-end: 75vh;
+}
+
+.txt-content {
+  opacity: 0;
+  animation: fade-in ease-in-out forwards, move-up ease-in-out;
+  animation-timeline: scroll(root);
+  animation-range-start: 50vh;
+  animation-range-end: 100vh;
+}
+
+.txt-content-2 {
+  opacity: 0;
+  animation: fade-in ease-in-out forwards, move-up ease-in-out;
+  animation-timeline: scroll(root);
+  animation-range-start: 75vh;
+  animation-range-end: 125vh;
+}
+
+.txt-content-3 {
+  opacity: 0;
+  animation: fade-in ease-in-out forwards, move-up ease-in-out;
+  animation-timeline: scroll(root);
+  animation-range-start: 100vh;
+  animation-range-end: 150vh;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes text-color-change {
+  from {
+    color: white;
+  }
+  to {
+    color: var(--color-red-sangria);
+  }
+}
+
+@keyframes bg-color-change {
+  from {
+    background: var(--color-red-sangria);
+  }
+  to {
+    background: white;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale3d(0.8, 0.8, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  to {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes zoom-out-mid {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  to {
+    transform: scale3d(1.3, 1.3, 1);
+  }
+}
+@keyframes zoom-out-more {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  to {
+    transform: scale3d(1.5, 1.5, 1);
+  }
+}
+@keyframes move-up {
+  from {
+    transform: translateY(80px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
