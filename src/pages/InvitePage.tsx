@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Overlay from "../components/Overlay";
 
 type Guest = {
   salutation: string;
@@ -9,14 +11,34 @@ type Guest = {
 };
 
 export default function InvitePage() {
-  const { inviteCode } = useParams<{ inviteCode: string }>();
   const [guest, setGuest] = useState<Guest | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingPercent, setLoadingPercent] = useState(0);
+  const { inviteCode } = useParams<{ inviteCode: string }>();
+  const { scrollYProgress } = useScroll();
+  const mainTextOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const subTextOpacity = useTransform(scrollYProgress, [0.25, 0.4], [0, 1]);
+  const ySubText1 = useTransform(scrollYProgress, [0.35, 0.5], [80, 0]);
+  const opacitySubText1 = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
+  const ySubText2 = useTransform(scrollYProgress, [0.45, 0.7], [80, 0]);
+  const opacitySubText2 = useTransform(scrollYProgress, [0.45, 0.7], [0, 1]);
+  const ySubText3 = useTransform(scrollYProgress, [0.65, 0.9], [80, 0]);
+  const opacitySubText3 = useTransform(scrollYProgress, [0.65, 0.9], [0, 1]);
+  const scaleSm = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const scaleMd = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+  const scaleLg = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
 
   useEffect(() => {
+    let interval: number | null = null;
+    setLoadingPercent(0);
+
     if (!inviteCode) {
+      setLoadingPercent(100);
       return;
     }
+
+    interval = setInterval(() => {
+      setLoadingPercent((prev) => (prev < 95 ? prev + 2 : prev));
+    }, 30);
 
     const fetchGuest = async () => {
       try {
@@ -32,18 +54,16 @@ export default function InvitePage() {
       } catch (err) {
         console.error("Lỗi khi gọi API", err);
       } finally {
-        setLoading(false);
+        setLoadingPercent(100);
+        if (interval) clearInterval(interval);
       }
     };
 
     fetchGuest();
   }, [inviteCode]);
 
-  if (loading) return <p>Đang tải dữ liệu...</p>;
-  if (!guest) return <p>Không tìm thấy lời mời.</p>;
-
-  function getDate(eventType: string): string {
-    switch (eventType) {
+  function getDate(): string {
+    switch (guest?.eventType) {
       case "tan-hon":
         return "13 . 07 . 2025";
       case "vu-quy":
@@ -53,8 +73,8 @@ export default function InvitePage() {
     }
   }
 
-  function getTitle(eventType: string): string {
-    switch (eventType) {
+  function getTitle(): string {
+    switch (guest?.eventType) {
       case "tan-hon":
         return "LỄ TÂN HÔN";
       case "vu-quy":
@@ -64,8 +84,8 @@ export default function InvitePage() {
     }
   }
 
-  function getPlaceHtml(eventType: string): React.ReactNode {
-    switch (eventType) {
+  function getPlaceHtml(): React.ReactNode {
+    switch (guest?.eventType) {
       case "tan-hon":
         return (
           <>
@@ -93,8 +113,8 @@ export default function InvitePage() {
     }
   }
 
-  function getTimeHtml(eventType: string): React.ReactNode {
-    switch (eventType) {
+  function getTimeHtml(): React.ReactNode {
+    switch (guest?.eventType) {
       case "tan-hon":
         return (
           <>
@@ -120,44 +140,72 @@ export default function InvitePage() {
   }
 
   return (
-    <div className="flex flex-col items-center scroll-container">
-      <div className="sticky-container">
-        <img
-          className="scroll-img"
-          src="/images/scroll.gif"
-          alt="scroll image"
-        />
-        <div className="bg-scroll"></div>
-        <div className="bg-main brightness-50"></div>
-        <div className="center-item txt-main text-white text-shadow-lg text-center">
-          <h2 className="text-small md:text-medium lg:text-huge font-1ftv">
-            Ngọc Minh & Ngân Hà
-          </h2>
-          <h3 className="mt-5 text-3xl font-cormorant">
-            {getDate(guest.eventType)}
-          </h3>
-          <h3 className="mt-10 font-cormorant">TRÂN TRỌNG KÍNH MỜI</h3>
-          <h3 className="text-small md:text-medium font-1ftv mt-2">
-            <span>{guest.salutation + " "} </span>
-            <span className="font-bold">{guest.name}</span>
-          </h3>
-        </div>
-        <div className="center-item text-white text-shadown-lg font-cormorant text-center">
-          <h3 className="text-small txt-sub">{getTitle(guest.eventType)}</h3>
-          <div className="txt-content mt-10">
-            <p>TRÂN TRỌNG KÍNH MỜI</p>
-            <p className="font-1ftv text-3xl">{guest.salutation}</p>
-            <p>ĐẾN DỰ BỮA TIỆC RƯỢU</p>
-            <p>CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI TẠI</p>
-          </div>
-          <div className="txt-content-2 mt-5">
-            {getPlaceHtml(guest.eventType)}
-          </div>
-          <div className="txt-content-3 mt-5">
-            {getTimeHtml(guest.eventType)}
+    <>
+      <Overlay loadingPercent={loadingPercent} />
+      <div className="flex flex-col items-center scroll-container">
+        <div className="sticky-container">
+          <motion.img
+            style={{ opacity: mainTextOpacity }}
+            className="scroll-img"
+            src="/images/scroll.gif"
+            alt="scroll image"
+          />
+          <motion.div
+            style={{ scale: scaleLg }}
+            className="bg-scroll"
+          ></motion.div>
+          <motion.div
+            style={{ scale: scaleSm }}
+            className="bg-main brightness-50"
+          ></motion.div>
+          <motion.div
+            style={{ opacity: mainTextOpacity, scale: scaleMd }}
+            className="center-item text-white text-shadow-lg text-center"
+          >
+            <h2 className="text-small md:text-medium lg:text-huge font-1ftv">
+              Ngọc Minh & Ngân Hà
+            </h2>
+            <h3 className="mt-5 text-3xl font-cormorant">{getDate()}</h3>
+            <h3 className="mt-10 font-cormorant">TRÂN TRỌNG KÍNH MỜI</h3>
+            <h3 className="text-small md:text-medium font-1ftv mt-2">
+              <span>{guest ? guest.salutation + " " : "-"} </span>
+              <span className="font-bold">{guest ? guest.name : "-"}</span>
+            </h3>
+          </motion.div>
+          <div className="center-item text-white text-shadown-lg font-cormorant text-center">
+            <motion.h3
+              style={{ opacity: subTextOpacity }}
+              className="text-small txt-sub"
+            >
+              {getTitle()}
+            </motion.h3>
+            <motion.div
+              initial={{ y: 80 }}
+              style={{ y: ySubText1, opacity: opacitySubText1 }}
+              className="mt-10"
+            >
+              <p>TRÂN TRỌNG KÍNH MỜI</p>
+              <p className="font-1ftv text-3xl">{guest?.salutation || ""}</p>
+              <p>ĐẾN DỰ BỮA TIỆC RƯỢU</p>
+              <p>CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI TẠI</p>
+            </motion.div>
+            <motion.div
+              initial={{ y: 80 }}
+              style={{ y: ySubText2, opacity: opacitySubText2 }}
+              className="mt-5"
+            >
+              {getPlaceHtml()}
+            </motion.div>
+            <motion.div
+              initial={{ y: 80 }}
+              style={{ y: ySubText3, opacity: opacitySubText3 }}
+              className="mt-5"
+            >
+              {getTimeHtml()}
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

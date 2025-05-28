@@ -63,6 +63,24 @@
   overflow: hidden;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 11;
+  background-color: var(--color-red-sangria);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "1FTV VIP High Spirited", sans-serif;
+  font-size: var(--text-huge);
+  line-height: var(--text-huge--line-height);
+  text-align: center;
+}
+
 .bg-scroll {
   z-index: 1;
   filter: grayscale(50%);
@@ -75,8 +93,6 @@
   position: absolute;
   top: 0;
   overflow: visible;
-  animation: zoom-out-more ease-in-out;
-  animation-timeline: scroll(root);
 }
 
 .bg-main {
@@ -86,8 +102,6 @@
   background-size: cover;
   width: 100%;
   height: 100vh;
-  animation: zoom-out ease-in-out;
-  animation-timeline: scroll(root);
 }
 
 .center-item {
@@ -108,125 +122,4 @@
   margin-left: calc(50% - 25px);
   position: absolute;
   inset: auto 0% 0%;
-  animation: fade-out ease-in-out forwards;
-  animation-timeline: scroll(root);
-  animation-range-start: 0vh;
-  animation-range-end: 25vh;
-}
-
-.txt-main {
-  animation: fade-out ease-in-out forwards, zoom-out-mid ease-in-out;
-  animation-timeline: scroll(root);
-  animation-range-start: 0vh;
-  animation-range-end: 50vh;
-}
-
-.txt-sub {
-  opacity: 0;
-  animation: fade-in ease-in-out forwards, zoom-in ease-in-out;
-  animation-timeline: scroll(root);
-  animation-range-start: 25vh;
-  animation-range-end: 75vh;
-}
-
-.txt-content {
-  opacity: 0;
-  animation: fade-in ease-in-out forwards, move-up ease-in-out;
-  animation-timeline: scroll(root);
-  animation-range-start: 50vh;
-  animation-range-end: 100vh;
-}
-
-.txt-content-2 {
-  opacity: 0;
-  animation: fade-in ease-in-out forwards, move-up ease-in-out;
-  animation-timeline: scroll(root);
-  animation-range-start: 75vh;
-  animation-range-end: 125vh;
-}
-
-.txt-content-3 {
-  opacity: 0;
-  animation: fade-in ease-in-out forwards, move-up ease-in-out;
-  animation-timeline: scroll(root);
-  animation-range-start: 100vh;
-  animation-range-end: 150vh;
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes text-color-change {
-  from {
-    color: white;
-  }
-  to {
-    color: var(--color-red-sangria);
-  }
-}
-
-@keyframes bg-color-change {
-  from {
-    background: var(--color-red-sangria);
-  }
-  to {
-    background: white;
-  }
-}
-
-@keyframes zoom-in {
-  from {
-    transform: scale3d(0.8, 0.8, 1);
-  }
-  to {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes zoom-out {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
-  to {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-@keyframes zoom-out-mid {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
-  to {
-    transform: scale3d(1.3, 1.3, 1);
-  }
-}
-@keyframes zoom-out-more {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
-  to {
-    transform: scale3d(1.5, 1.5, 1);
-  }
-}
-@keyframes move-up {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0);
-  }
 }
