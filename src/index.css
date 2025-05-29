@@ -10,6 +10,10 @@
   --text-small--line-height: 3rem;
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
 @font-face {
   font-family: "1FTV VIP High Spirited";
   src: url("/fonts/1FTV-VIP-High-Spirited.otf") format("opentype");
