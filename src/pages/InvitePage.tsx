@@ -151,15 +151,34 @@ export default function InvitePage() {
             alt="scroll image"
           />
           <motion.div
-            style={{ scale: scaleLg }}
+            style={{
+              willChange: "transform",
+              scaleX: scaleLg,
+              scaleY: scaleLg,
+              scaleZ: 1,
+              transformStyle: "preserve-3d",
+            }}
             className="bg-scroll"
           ></motion.div>
           <motion.div
-            style={{ scale: scaleSm }}
+            style={{
+              willChange: "transform",
+              scaleX: scaleSm,
+              scaleY: scaleSm,
+              scaleZ: 1,
+              transformStyle: "preserve-3d",
+            }}
             className="bg-main brightness-50"
           ></motion.div>
           <motion.div
-            style={{ opacity: mainTextOpacity, scale: scaleMd }}
+            style={{
+              willChange: "transform, opacity",
+              scaleX: scaleMd,
+              scaleY: scaleMd,
+              scaleZ: 1,
+              transformStyle: "preserve-3d",
+              opacity: mainTextOpacity,
+            }}
             className="center-item text-white text-shadow-lg text-center"
           >
             <h2 className="text-small md:text-medium lg:text-huge font-1ftv">
@@ -174,14 +193,17 @@ export default function InvitePage() {
           </motion.div>
           <div className="center-item text-white text-shadown-lg font-cormorant text-center">
             <motion.h3
-              style={{ opacity: subTextOpacity }}
+              style={{ willChange: "opacity", opacity: subTextOpacity }}
               className="text-small txt-sub"
             >
               {getTitle()}
             </motion.h3>
             <motion.div
-              initial={{ y: 80 }}
-              style={{ y: ySubText1, opacity: opacitySubText1 }}
+              style={{
+                willChange: "transform, opacity",
+                translateY: ySubText1,
+                opacity: opacitySubText1,
+              }}
               className="mt-10"
             >
               <p>TRÂN TRỌNG KÍNH MỜI</p>
@@ -190,15 +212,21 @@ export default function InvitePage() {
               <p>CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI TẠI</p>
             </motion.div>
             <motion.div
-              initial={{ y: 80 }}
-              style={{ y: ySubText2, opacity: opacitySubText2 }}
+              style={{
+                willChange: "transform, opacity",
+                translateY: ySubText2,
+                opacity: opacitySubText2,
+              }}
               className="mt-5"
             >
               {getPlaceHtml()}
             </motion.div>
             <motion.div
-              initial={{ y: 80 }}
-              style={{ y: ySubText3, opacity: opacitySubText3 }}
+              style={{
+                willChange: "transform, opacity",
+                translateY: ySubText3,
+                opacity: opacitySubText3,
+              }}
               className="mt-5"
             >
               {getTimeHtml()}
