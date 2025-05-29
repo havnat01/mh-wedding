@@ -10,6 +10,14 @@
   --text-small--line-height: 3rem;
 }
 
+* {
+  --webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
 body {
   -webkit-font-smoothing: antialiased;
 }
