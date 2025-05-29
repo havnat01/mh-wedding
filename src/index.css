@@ -69,6 +69,7 @@ body {
 
 .overlay {
   position: fixed;
+  padding: 8rem;
   top: 0;
   width: 100%;
   height: 100vh;
@@ -78,11 +79,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-family: "1FTV VIP High Spirited", sans-serif;
-  font-size: var(--text-huge);
-  line-height: var(--text-huge--line-height);
-  text-align: center;
 }
 
 .bg-scroll {
