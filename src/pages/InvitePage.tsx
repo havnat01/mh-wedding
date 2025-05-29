@@ -153,9 +153,7 @@ export default function InvitePage() {
           <motion.div
             style={{
               willChange: "transform",
-              scaleX: scaleLg,
-              scaleY: scaleLg,
-              scaleZ: 1,
+              scale: scaleLg,
               transformStyle: "preserve-3d",
             }}
             className="bg-scroll"
@@ -163,9 +161,7 @@ export default function InvitePage() {
           <motion.div
             style={{
               willChange: "transform",
-              scaleX: scaleSm,
-              scaleY: scaleSm,
-              scaleZ: 1,
+              scale: scaleSm,
               transformStyle: "preserve-3d",
             }}
             className="bg-main brightness-50"
@@ -173,9 +169,7 @@ export default function InvitePage() {
           <motion.div
             style={{
               willChange: "transform, opacity",
-              scaleX: scaleMd,
-              scaleY: scaleMd,
-              scaleZ: 1,
+              scale: scaleMd,
               transformStyle: "preserve-3d",
               opacity: mainTextOpacity,
             }}
