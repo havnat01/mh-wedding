@@ -2,12 +2,6 @@
 
 @theme {
   --color-red-sangria: #9d060d;
-  --text-huge: 7rem;
-  --text-huge--line-height: 7rem;
-  --text-medium: 5rem;
-  --text-medium--line-height: 5rem;
-  --text-small: 3rem;
-  --text-small--line-height: 3rem;
 }
 
 body {
@@ -83,7 +77,6 @@ body {
 
 .bg-scroll {
   z-index: 1;
-  filter: grayscale(50%);
   background-image: url("/images/cover.png");
   background-position: 50%;
   background-repeat: no-repeat;
@@ -114,13 +107,4 @@ body {
   position: absolute;
   inset: 0% auto auto 0%;
   z-index: 2;
-}
-
-.scroll-img {
-  z-index: 10;
-  width: 50px;
-  margin-bottom: 80px;
-  margin-left: calc(50% - 25px);
-  position: absolute;
-  inset: auto 0% 0%;
 }
