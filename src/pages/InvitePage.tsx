@@ -77,6 +77,7 @@ export default function InvitePage() {
   const { scrollYProgress } = useScroll();
 
   // Motion transforms
+  const scrollIdx = useTransform(scrollYProgress, [0, 0.3], [9, -1]);
   const mainTextOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const subTextOpacity = useTransform(scrollYProgress, [0.25, 0.4], [0, 1]);
   const ySubText1 = useTransform(scrollYProgress, [0.35, 0.5], [80, 0]);
@@ -172,7 +173,7 @@ export default function InvitePage() {
               willChange: "opacity",
               opacity: mainTextOpacity,
               position: "fixed",
-              zIndex: 9,
+              zIndex: scrollIdx,
               left: "calc(50% - 25px)",
               bottom: 32,
               cursor: "pointer",
