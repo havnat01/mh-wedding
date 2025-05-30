@@ -17,7 +17,7 @@ export default function Overlay({
 
   return (
     <motion.div
-      className="overlay font-1ftv text-small md:text-medium lg:text-huge"
+      className="overlay font-1ftv text-5xl md:text-7xl lg:text-9xl"
       initial={{ y: 0 }}
       animate={{ y: loadingPercent >= 100 ? "-130%" : 0 }}
       transition={{
