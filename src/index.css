@@ -46,7 +46,6 @@ body {
 
 .scroll-container {
   width: 100%;
-  max-width: 1920px;
   height: 260vh;
   margin-left: auto;
   margin-right: auto;

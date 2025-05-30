@@ -209,16 +209,16 @@ export default function InvitePage() {
             }}
             className="text-item text-white text-shadow-lg text-center"
           >
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-1ftv">
+            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-1ftv">
               Ngọc Minh & Ngân Hà
             </h2>
             <h3 className="text-2xl mt-2 sm:text-3xl md:text-4xl lg:text-5xl sm:mt-5 font-cormorant">
               {eventInfo.date}
             </h3>
-            <h3 className="text-sm mt-5 sm:text-lg sm:mt-10 md:text-xl lg:text-2xl font-cormorant">
+            <h3 className="text-base mt-7 sm:text-lg sm:mt-8 md:text-xl md:mt-9 lg:text-2xl lg:mt-10 font-cormorant">
               TRÂN TRỌNG KÍNH MỜI
             </h3>
-            <h3 className="text-3xl sm:text-5xl md:text-7xl font-8xl font-1ftv mt-2">
+            <h3 className="text-4xl sm:text-5xl md:text-7xl font-8xl font-1ftv mt-2">
               <span>{guest ? guest.salutation + " " : ""}</span>
               <span className="font-bold">{guest ? guest.name : ""}</span>
             </h3>
@@ -236,10 +236,10 @@ export default function InvitePage() {
                 y: ySubText1,
                 opacity: opacitySubText1,
               }}
-              className="text-sm mt-7 sm:text-base sm:mt-8 md:text-lg md:mt-9 lg:text-xl lg:mt-10"
+              className="text-base mt-7 sm:text-lg sm:mt-8 md:text-xl md:mt-9 lg:text-2xl lg:mt-10"
             >
               <p>TRÂN TRỌNG KÍNH MỜI</p>
-              <p className="text-3xl md:text-4xl font-1ftv">
+              <p className="text-3xl sm:text-4xl md:text-5xl font-1ftv">
                 {guest?.salutation || ""}
               </p>
               <p>ĐẾN DỰ BỮA TIỆC RƯỢU</p>
@@ -251,9 +251,9 @@ export default function InvitePage() {
                 y: ySubText2,
                 opacity: opacitySubText2,
               }}
-              className="text-sm mt-2 sm:text-base sm:mt-3 md:text-lg md:mt-4 lg:text-xl lg:mt-5"
+              className="text-base mt-2 sm:text-lg sm:mt-3 md:text-xl md:mt-4 lg:text-2xl lg:mt-5"
             >
-              <p className="text-xl mt-3 sm:text-2xl sm:mt-4 md:text-3xl md:mt-5 lg:text-4xl lg:mt-6 text-bold font-hlt">
+              <p className="text-2xl mt-3 sm:text-3xl sm:mt-4 md:text-4xl md:mt-5 lg:text-5xl lg:mt-6 text-bold font-hlt">
                 {eventInfo.place.name}
               </p>
               {eventInfo.place.details.map((line, idx) => (
@@ -270,7 +270,7 @@ export default function InvitePage() {
               }}
               className="mt-2 sm:mt-3 md:mt-4 lg:mt-5"
             >
-              <p className="text-sm sm:text-base md:text-lg lg:text-lg">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl">
                 VÀO LÚC: {eventInfo.time} - {eventInfo.day}
               </p>
               <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-bold">
