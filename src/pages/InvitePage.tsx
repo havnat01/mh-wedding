@@ -161,7 +161,7 @@ export default function InvitePage() {
           />
           <motion.div
             style={{
-              willChange: "transform",
+              willChange: "transform, contents",
               scale: scaleLg,
               transformStyle: "preserve-3d",
               filter: bgFilter,
@@ -170,7 +170,7 @@ export default function InvitePage() {
           ></motion.div>
           <motion.div
             style={{
-              willChange: "transform",
+              willChange: "transform, contents",
               scale: scaleSm,
               transformStyle: "preserve-3d",
               filter: bgFilter,
@@ -192,8 +192,8 @@ export default function InvitePage() {
             <h3 className="mt-5 text-3xl font-cormorant">{getDate()}</h3>
             <h3 className="mt-10 font-cormorant">TRÂN TRỌNG KÍNH MỜI</h3>
             <h3 className="text-small md:text-medium font-1ftv mt-2">
-              <span>{guest ? guest.salutation + " " : "-"} </span>
-              <span className="font-bold">{guest ? guest.name : "-"}</span>
+              <span>{guest ? guest.salutation + " " : ""} </span>
+              <span className="font-bold">{guest ? guest.name : ""}</span>
             </h3>
           </motion.div>
           <div className="text-item text-white text-shadow-lg font-cormorant text-center">

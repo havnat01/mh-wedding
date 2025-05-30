@@ -19,8 +19,15 @@ export default function Overlay({
     <motion.div
       className="overlay font-1ftv text-small md:text-medium lg:text-huge"
       initial={{ y: 0 }}
-      animate={{ y: loadingPercent >= 100 ? "-100%" : 0 }}
-      transition={{ delay: 1, type: "spring", stiffness: 80, damping: 20 }}
+      animate={{ y: loadingPercent >= 100 ? "-130%" : 0 }}
+      transition={{
+        delay: 1,
+        type: "spring",
+        stiffness: 80,
+        damping: 20,
+        ease: "easeInOut",
+        duration: 1.3,
+      }}
     >
       <svg
         style={{
