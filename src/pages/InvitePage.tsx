@@ -25,7 +25,16 @@ export default function InvitePage() {
   const opacitySubText3 = useTransform(scrollYProgress, [0.65, 0.9], [0, 1]);
   const scaleSm = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const scaleMd = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const scaleLg = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
+  const scaleLg = useTransform(scrollYProgress, [0, 1], [1.2, 1.7]);
+  const bgFilter = useTransform(
+    scrollYProgress,
+    [0, 0.35, 1],
+    [
+      "blur(1px) brightness(50%)",
+      "blur(0px) brightness(100%)",
+      "blur(1px) brightness(50%)",
+    ]
+  );
 
   useEffect(() => {
     let interval: number | null = null;
@@ -155,6 +164,7 @@ export default function InvitePage() {
               willChange: "transform",
               scale: scaleLg,
               transformStyle: "preserve-3d",
+              filter: bgFilter,
             }}
             className="bg-scroll"
           ></motion.div>
@@ -163,6 +173,7 @@ export default function InvitePage() {
               willChange: "transform",
               scale: scaleSm,
               transformStyle: "preserve-3d",
+              filter: bgFilter,
             }}
             className="bg-main brightness-50"
           ></motion.div>
@@ -173,7 +184,7 @@ export default function InvitePage() {
               transformStyle: "preserve-3d",
               opacity: mainTextOpacity,
             }}
-            className="center-item text-white text-shadow-lg text-center"
+            className="text-item text-white text-shadow-lg text-center"
           >
             <h2 className="text-small md:text-medium lg:text-huge font-1ftv">
               Ngọc Minh & Ngân Hà
@@ -185,10 +196,10 @@ export default function InvitePage() {
               <span className="font-bold">{guest ? guest.name : "-"}</span>
             </h3>
           </motion.div>
-          <div className="center-item text-white text-shadown-lg font-cormorant text-center">
+          <div className="text-item text-white text-shadow-lg font-cormorant text-center">
             <motion.h3
               style={{ willChange: "opacity", opacity: subTextOpacity }}
-              className="text-small txt-sub"
+              className="text-small"
             >
               {getTitle()}
             </motion.h3>
