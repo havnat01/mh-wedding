@@ -257,7 +257,10 @@ export default function InvitePage() {
                 {eventInfo.place.name}
               </p>
               {eventInfo.place.details.map((line, idx) => (
-                <p className={idx === 0 ? "mt-2" : ""} key={idx}>
+                <p
+                  className={idx === 0 ? "mt-2 sm:mt-3 md:mt-4 lg:mt-5" : ""}
+                  key={idx}
+                >
                   {line}
                 </p>
               ))}
