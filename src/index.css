@@ -75,7 +75,7 @@ body {
 }
 
 .bg-scroll {
-  z-index: 1;
+  z-index: 3;
   background-image: url("/images/cover.png");
   background-position: 50%;
   background-repeat: no-repeat;
@@ -105,5 +105,5 @@ body {
   display: flex;
   position: absolute;
   inset: 0% auto auto 0%;
-  z-index: 2;
+  z-index: 3;
 }
