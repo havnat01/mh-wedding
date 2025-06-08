@@ -8,7 +8,6 @@ type EventType = "tan-hon" | "vu-quy" | "bao-hy";
 type Guest = {
   salutation: string;
   name: string;
-  inviteCode: string;
   eventType: EventType;
 };
 
@@ -115,7 +114,7 @@ export default function InvitePage() {
     const fetchGuest = async () => {
       try {
         const res = await fetch(
-          `https://script.google.com/macros/s/AKfycbznvZQvrJVnb6Xm1Dv7bMTQoWUFcRSj5m1hABZOm3YCY1VuyXmWpbrPQLl9BCgHwpY-/exec?inviteCode=${inviteCode}`
+          `https://script.google.com/macros/s/AKfycbx-O9-gYfCKefIgYZskk4zdi5CZFFKELenEBracqiRaQAeTjOOVuQkMKqy63Szbt2Sr/exec?inviteCode=${inviteCode}`
         );
         const data = await res.json();
         setGuest(data.length > 0 ? data[0] : null);
