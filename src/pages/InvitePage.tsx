@@ -7,6 +7,7 @@ import Audio from "../components/Audio";
 type EventType = "tan-hon" | "vu-quy" | "bao-hy";
 type Guest = {
   salutation: string;
+  salutation2: string;
   name: string;
   eventType: EventType;
 };
@@ -114,7 +115,7 @@ export default function InvitePage() {
     const fetchGuest = async () => {
       try {
         const res = await fetch(
-          `https://script.google.com/macros/s/AKfycbx-O9-gYfCKefIgYZskk4zdi5CZFFKELenEBracqiRaQAeTjOOVuQkMKqy63Szbt2Sr/exec?inviteCode=${inviteCode}`
+          `https://script.google.com/macros/s/AKfycbyGtSrhApOQp9FXIJWoDzuYCiGDu-nibz5LYpIjcSx0DO3zq00tnupgRwMw8Dqs4RVu/exec?inviteCode=${inviteCode}`
         );
         const data = await res.json();
         setGuest(data.length > 0 ? data[0] : null);
@@ -240,7 +241,7 @@ export default function InvitePage() {
             >
               <p>TRÂN TRỌNG KÍNH MỜI</p>
               <p className="text-3xl sm:text-4xl md:text-5xl font-1ftv">
-                {guest?.salutation || ""}
+                {guest?.salutation2 || guest?.salutation || ""}
               </p>
               <p>ĐẾN DỰ BỮA TIỆC RƯỢU</p>
               <p>CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI TẠI</p>
