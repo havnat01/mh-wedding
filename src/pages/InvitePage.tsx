@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Overlay from "../components/Overlay";
 import Audio from "../components/Audio";
 
@@ -77,20 +77,25 @@ export default function InvitePage() {
   const { scrollYProgress } = useScroll();
 
   // Motion transforms
-  const scrollIdx = useTransform(scrollYProgress, [0, 0.3], [9, -1]);
-  const mainTextOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const subTextOpacity = useTransform(scrollYProgress, [0.25, 0.4], [0, 1]);
-  const ySubText1 = useTransform(scrollYProgress, [0.35, 0.5], [80, 0]);
-  const opacitySubText1 = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
-  const ySubText2 = useTransform(scrollYProgress, [0.45, 0.7], [80, 0]);
-  const opacitySubText2 = useTransform(scrollYProgress, [0.45, 0.7], [0, 1]);
-  const ySubText3 = useTransform(scrollYProgress, [0.65, 0.9], [80, 0]);
-  const opacitySubText3 = useTransform(scrollYProgress, [0.65, 0.9], [0, 1]);
-  const scaleSm = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const scaleMd = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const scaleLg = useTransform(scrollYProgress, [0, 1], [1.2, 1.7]);
+  const smoothYProgess = useSpring(scrollYProgress, {
+    damping: 20,
+    stiffness: 100,
+    restDelta: 0.001,
+  });
+  const scrollIdx = useTransform(smoothYProgess, [0, 0.3], [9, -1]);
+  const mainTextOpacity = useTransform(smoothYProgess, [0, 0.3], [1, 0]);
+  const subTextOpacity = useTransform(smoothYProgess, [0.25, 0.4], [0, 1]);
+  const ySubText1 = useTransform(smoothYProgess, [0.35, 0.5], [80, 0]);
+  const opacitySubText1 = useTransform(smoothYProgess, [0.35, 0.5], [0, 1]);
+  const ySubText2 = useTransform(smoothYProgess, [0.45, 0.7], [80, 0]);
+  const opacitySubText2 = useTransform(smoothYProgess, [0.45, 0.7], [0, 1]);
+  const ySubText3 = useTransform(smoothYProgess, [0.65, 0.9], [80, 0]);
+  const opacitySubText3 = useTransform(smoothYProgess, [0.65, 0.9], [0, 1]);
+  const scaleSm = useTransform(smoothYProgess, [0, 1], [1, 1.1]);
+  const scaleMd = useTransform(smoothYProgess, [0, 1], [1, 1.3]);
+  const scaleLg = useTransform(smoothYProgess, [0, 1], [1.2, 1.7]);
   const bgFilter = useTransform(
-    scrollYProgress,
+    smoothYProgess,
     [0, 0.35, 0.6],
     [
       "blur(1px) brightness(50%)",
